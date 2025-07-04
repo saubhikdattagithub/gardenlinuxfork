@@ -26,10 +26,8 @@ jobs:
 
     - name: Run QCOW2 creation script
       run: |
-        ./build kvm-lima-amd64
-        cd ./.build
-        IMAGE_QCOW2=$(find . -mmin -20 -maxdepth 1 -type f -name "*.qcow2" -exec basename {} \;)
-        gsutil cp "${IMAGE_QCOW2}" gs://${{ secrets.GCP_BUCKET }}/${{ secrets.IMAGE_NAME }}
+        touch image.qcow2
+        gsutil cp image.qcow2 gs://${{ secrets.GCP_BUCKET }}/${{ secrets.IMAGE_NAME }}
 
     - name: Output public URL
       run: echo "QCOW2 uploaded to https://storage.googleapis.com/lima-images-qcow2/garden-lima-today.qcow2"
