@@ -19,7 +19,6 @@ jobs:
     - name: Authenticate to Google Cloud
       uses: google-github-actions/setup-gcloud@v1
       with:
-        version: 'latest'
         project_id: 'heidelberg-417321'
         service_account_key: ${{ secrets.GCP_KEY }}
         export_default_credentials: true
