@@ -30,6 +30,9 @@ jobs:
         #service_account: '${{ secrets.GCP_SERVICE_ACCOUNT }}'
         workload_identity_provider: "projects/366393408502/locations/global/workloadIdentityPools/github-pool"
         service_account: "gha-sa@heidelberg-417321.iam.gserviceaccount.com"
+        create_credentials_file: true
+        cleanup_credentials: true
+        export_environment_variables: true
 
     # ✅ Step 2: Set up gcloud SDK
     - name : Set account config
