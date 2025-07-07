@@ -30,6 +30,7 @@ jobs:
         #service_account: '${{ secrets.GCP_SERVICE_ACCOUNT }}'
         workload_identity_provider: "projects/366393408502/locations/global/workloadIdentityPools/github-pool"
         service_account: "gha-sa@heidelberg-417321.iam.gserviceaccount.com"
+        audience: '//iam.googleapis.com/projects/366393408502/locations/global/workloadIdentityPools/github-pool/providers/github-provider'
         create_credentials_file: true
         cleanup_credentials: true
         export_environment_variables: true
