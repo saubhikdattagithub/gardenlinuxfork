@@ -36,11 +36,11 @@ jobs:
         export_environment_variables: true
 
     # ✅ Step 2: Set up gcloud SDK
-    #- name : Set account config
-    #  run: |
+    - name : Set account config
+      run: |
     #    gcloud auth login
-    #    gcloud config set account saubhikdatta@gmail.com
-    #    gcloud --quiet config set project heidelberg-417321
+        gcloud config set account saubhikdatta@gmail.com
+        gcloud --quiet config set project heidelberg-417321
       
     - name: Set up gcloud SDK
       uses: google-github-actions/setup-gcloud@v1
