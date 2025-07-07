@@ -35,11 +35,10 @@ jobs:
         cleanup_credentials: true
         export_environment_variables: true
 
-    # ✅ Step 2: Set up gcloud SDK
+    ## ✅ Step 2: Set up gcloud SDK
     - name : Set account config
       run: |
-    #    gcloud auth login
-        gcloud config set account saubhikdatta@gmail.com
+        gcloud --quiet config set account saubhikdatta@gmail.com
         gcloud --quiet config set project heidelberg-417321
       
     - name: Set up gcloud SDK
