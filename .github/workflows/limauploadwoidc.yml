@@ -44,11 +44,11 @@ jobs:
 
     - name: lima.yaml
       run: |
-      mkdir -p output
-      cd output
-      SHA_AMD=$(cat "*amd*".sha512)
-      SHA_ARM=$(cat "*arm*".sha512)
-      cat <<EOF > lima.yaml
+        mkdir -p output
+        cd output
+        SHA_AMD=$(cat "*amd*".sha512)
+        SHA_ARM=$(cat "*arm*".sha512)
+        cat <<EOF > lima.yaml
 vmType: qemu
 os: Linux
 images:
