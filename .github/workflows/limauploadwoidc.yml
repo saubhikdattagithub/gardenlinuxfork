@@ -38,8 +38,7 @@ jobs:
       run: |
         mkdir -p output
         cd output
-        SHA_AMD=$(cat "*amd*".sha512)
-        SHA_ARM=$(cat "*arm*".sha512)
+        ls -l
         cat <<EOF > lima.yaml
         vmType: qemu
         os: Linux
