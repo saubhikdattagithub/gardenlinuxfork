@@ -57,7 +57,7 @@ jobs:
     - name: Authenticate with Google Cloud
       uses: google-github-actions/auth@v2
       with:
-        workload_identity_provider: "projects/366393408502/locations/global/workloadIdentityPools/github-pool-5/providers/github-provider-5"
+        workload_identity_provider: "projects/366393408502/locations/global/workloadIdentityPools/github-pool-6/providers/github-provider-6"
         service_account: "gha-sa@heidelberg-417321.iam.gserviceaccount.com"
 
 
@@ -72,14 +72,14 @@ jobs:
       run: |
         cd output
         IMAGE_AMD=$(ls *amd*.qcow2)
-        IMAGE_ARM=$(ls *arm*.qcow2)
+        #IMAGE_ARM=$(ls *arm*.qcow2)
         SHA_AMD=$(ls *amd*.sha512)
-        SHA_ARM=$(ls *arm*.sha512)
+        #SHA_ARM=$(ls *arm*.sha512)
         gsutil cp "lima.yaml" gs://${{ secrets.GCP_BUCKET }}/lima.yaml
         gsutil cp "$IMAGE_AMD" gs://${{ secrets.GCP_BUCKET }}/gardenlinux-amd64-today.qcow2
         gsutil cp "$SHA_AMD" gs://${{ secrets.GCP_BUCKET }}/gardenlinux-amd64-today.qcow2.sha512
-        gsutil cp "$IMAGE_ARM" gs://${{ secrets.GCP_BUCKET }}/gardenlinux-arm64-today.qcow2
-        gsutil cp "$SHA_ARM" gs://${{ secrets.GCP_BUCKET }}/gardenlinux-arm64-today.qcow2.sha512
+        #gsutil cp "$IMAGE_ARM" gs://${{ secrets.GCP_BUCKET }}/gardenlinux-arm64-today.qcow2
+        #gsutil cp "$SHA_ARM" gs://${{ secrets.GCP_BUCKET }}/gardenlinux-arm64-today.qcow2.sha512
         
     # ✅ Step 5: Confirmation with URL
     - name: Output public URL
