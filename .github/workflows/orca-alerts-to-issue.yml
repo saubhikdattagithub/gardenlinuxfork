@@ -30,7 +30,6 @@ jobs:
               "filters": {
                 "state": ["open"],
                 "severity": ["High", "Critical", "Medium"],
-                "category": ["Best practices"],
                 "business_unit": ["garden-linux"]
               },
               "limit": 200
