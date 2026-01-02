@@ -2,7 +2,7 @@ name: Orca Security Alerts → GitHub Issue
 
 on:
   schedule:
-    - cron: "0 1 * * *"   # every 15 days at 09:00 UTC
+    - cron: "*/5 * * * *"   # every 15 days at 09:00 UTC
   workflow_dispatch:
 
 permissions:
