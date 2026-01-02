@@ -20,45 +20,45 @@ jobs:
           ORCA_API_TOKEN: ${{ secrets.ORCA_API_TOKEN }}
         run: |
           set -euo pipefail
-
-        curl -X POST 'https://app.eu.sap.orcasecurity.io/api/serving-layer/query' \
-        -H 'authority: app.eu.sap.orcasecurity.io' \
-        -H 'accept: application/json, text/plain, */*' \
-        -H 'accept-language: en-US,en;q=0.9' \
-        -H 'authorization: TOKEN {{ORCA_API_TOKEN}}' \
-        -H 'content-type: application/json' \
-        --data-raw '{
-          "query": {
-            "models": [
-              "Alert"
-            ],
-            "type": "object_set",
-            "with": {
-              "operator": "and",
-              "type": "operation",
-              "values": [
-                {
-                  "key": "RiskLevel",
-                  "values": [
-                    "critical",
-                    "high",
-                    "medium"
-                  ],
-                  "type": "str",
-                  "operator": "in"
-                },
-                {
-                  "key": "Status",
-                  "values": [
-                    "open",
-                    "in_progress"
-                  ],
-                  "type": "str",
-                  "operator": "in"
-                }
-              ]
-            }
-          },
+        API='https://app.eu.sap.orcasecurity.io/api/serving-layer/query'
+        curl -X POST $API \
+          -H 'authority: app.eu.sap.orcasecurity.io' \
+          -H 'accept: application/json, text/plain, */*' \
+          -H 'accept-language: en-US,en;q=0.9' \
+          -H 'authorization: TOKEN {{ORCA_API_TOKEN}}' \
+          -H 'content-type: application/json' \
+          --data-raw '{
+            "query": {
+              "models": [
+                "Alert"
+              ],
+              "type": "object_set",
+              "with": {
+                "operator": "and",
+                "type": "operation",
+                "values": [
+                  {
+                    "key": "RiskLevel",
+                    "values": [
+                      "critical",
+                      "high",
+                      "medium"
+                    ],
+                    "type": "str",
+                    "operator": "in"
+                  },
+                  {
+                    "key": "Status",
+                    "values": [
+                      "open",
+                      "in_progress"
+                    ],
+                    "type": "str",
+                    "operator": "in"
+                  }
+                ]
+              }
+            },
           "limit": 100,
           "start_at_index": 0,
           "order_by[]": [
