@@ -35,13 +35,16 @@ jobs:
               },
               "limit": 200
             }' > alerts.json
-
-          COUNT=$(jq '.data | length' alerts.json)
-          echo "count=$COUNT" >> $GITHUB_OUTPUT
+          echo "=== RAW ORCA RESPONSE ==="
+          cat alerts.json
+          echo "========================="
+          
+          COUNT=$(jq '.data // [] | length' alerts.json)
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
 
           jq -r '
-            .data[]
-            | "- **\(.title)** (Severity: \(.severity))\n  Resource: \(.asset_name)\n  Link: \(.console_link)"
+          (.data // [])[]
+          | "- **\(.title // "No title")** (Severity: \(.severity // "N/A"))\n  Resource: \(.asset_name // "N/A")\n  Link: \(.console_link // "N/A")"
           ' alerts.json > alert_list.md
 
       - name: Create GitHub issue
